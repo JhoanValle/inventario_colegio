@@ -62,4 +62,4 @@ EXPOSE 8080
 
 # Inicio: Enlace, Migración y ejecución de servicios
 # Nota: La migración corre --force en producción
-CMD php artisan storage:link --force && php artisan migrate --force --seed && php-fpm -D && nginx -g "daemon off;"
+CMD php artisan storage:link --force && php artisan migrate --force && php-fpm -D && nginx -g "daemon off;"

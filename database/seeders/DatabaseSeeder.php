@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrador Inventario',
             'email' => 'admin.nsp.2026@gmail.com',
             'password' => Hash::make('12345678'),
-            'rol' => 'Administrador',
+            'rol' => 'administrador',
             'email_verified_at' => now(),
         ]);
 

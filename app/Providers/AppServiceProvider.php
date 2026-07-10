@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL; // <--- Importa esto
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,5 +23,10 @@ class AppServiceProvider extends ServiceProvider
     {
         // 🔥 Activa paginación con estilo Bootstrap
         Paginator::useBootstrap();
+
+        // Forzar HTTPS en entorno de producción para evitar avisos de seguridad
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 }
