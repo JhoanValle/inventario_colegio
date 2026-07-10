@@ -64,3 +64,7 @@ EXPOSE 8080
 # Nota: La migración corre --force en producción
 CMD php artisan storage:link --force && php artisan migrate --force --seed && php-fpm -D && nginx -g "daemon off;"
 
+
+
+
+
