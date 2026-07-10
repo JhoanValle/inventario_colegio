@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\URL; // <--- Importa esto
+use Illuminate\Support\Facades\URL; // Importante: Asegúrate que esta línea esté aquí
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,11 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // 🔥 Activa paginación con estilo Bootstrap
+        // Activa paginación con estilo Bootstrap
         Paginator::useBootstrap();
 
-        // Forzar HTTPS en entorno de producción para evitar avisos de seguridad
-        if (config('app.env') === 'production') {
+        // Solución robusta para HTTPS en Railway
+        if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
     }
