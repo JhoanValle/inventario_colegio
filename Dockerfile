@@ -55,5 +55,5 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 EXPOSE 8080
 
-# Comando de inicio: Migra, siembra (de forma segura) e inicia servicios
-CMD php artisan storage:link --force && php artisan migrate --force && php artisan db:seed --force && php-fpm -D && nginx -g "daemon off;"
+# Comando de inicio: Recrea el enlace simbólico y corre los servicios
+CMD php artisan storage:link --force && php artisan migrate --force --seed && php-fpm -D && nginx -g "daemon off;"
