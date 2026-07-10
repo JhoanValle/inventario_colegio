@@ -3,37 +3,39 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\URL; // <-- Añadimos esta importación para poder usar el comando de HTTPS
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema; // Añadido para verificar la tabla
+use App\Models\Configuracion;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
-        //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        // 1. Fuerza a Laravel a generar todos los enlaces de CSS, JS e imágenes con HTTPS en Render
-        if (config('app.env') === 'production' || env('APP_ENV') === 'production') {
+        // 1. Configuración de HTTPS
+        if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
 
-        // 2. Tu código original para la configuración de las vistas (se mantiene intacto)
-        \Illuminate\Support\Facades\View::composer('*', function ($view) {
+        // 2. Composición de vistas (Versión Segura)
+        // Verificamos que la tabla exista antes de intentar consultar
+        View::composer('*', function ($view) {
             $config = null;
+            
             try {
-                $config = \App\Models\Configuracion::first();
+                // Solo consultamos si la tabla realmente existe en la BD
+                if (Schema::hasTable('configuracions')) {
+                    $config = Configuracion::first();
+                }
             } catch (\Throwable $e) {
-                // Table might not exist yet during migrations or tests setup
+                // Fallo silencioso si la BD no está disponible
             }
-            $view->with('config', $config ?? new \App\Models\Configuracion());
+            
+            $view->with('config', $config ?? new Configuracion());
         });
     }
 }
