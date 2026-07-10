@@ -1,0 +1,282 @@
+body{
+    background: #f1f5f9;
+    overflow-x: hidden;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width: 270px;
+    height: 100vh;
+
+    background: #0f172a;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+
+    overflow-y: auto;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-area{
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-icon{
+    width: 60px;
+    height: 60px;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.logo-icon img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.logo-area h5{
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: white;
+}
+
+.logo-area small{
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu-title{
+    color: #64748b;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.menu-item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 16px;
+
+    margin-bottom: 8px;
+
+    color: #cbd5e1;
+    text-decoration: none;
+
+    border-radius: 14px;
+
+    transition: all .3s ease;
+}
+
+.menu-item:hover{
+    background: #1e293b;
+
+    color: white;
+
+    transform: translateX(5px);
+}
+
+.menu-item i{
+    font-size: 18px;
+}
+
+/* =========================
+   USER PANEL
+========================= */
+
+.sidebar-user{
+    margin-top: auto;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 20px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+}
+
+.user-avatar{
+    width: 65px;
+    height: 65px;
+
+    margin: auto;
+    margin-bottom: 10px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,#3b82f6,#06b6d4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 25px;
+}
+
+.user-role{
+    color: #94a3b8;
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.user-name{
+    font-size: 15px;
+    font-weight: 600;
+
+    margin-bottom: 6px;
+
+    color: white;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    max-width: 180px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-email{
+    display: none;
+}
+
+.logout-btn-sidebar{
+    width: 100%;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: transparent;
+
+    color: white;
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    transition: .3s;
+}
+
+.logout-btn-sidebar:hover{
+    background: white;
+    color: #0f172a;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    margin-left: 270px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    margin-left: 270px;
+    padding: 20px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    border-radius: 16px;
+    border: none;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin-left: 270px;
+}
+
+/* =========================
+   ESTADO ACTIVO (MÓDULO SELECCIONADO)
+========================= */
+
+.menu-item.active {
+    background: #1e293b; /* Un tono más claro que el fondo original */
+    color: white; /* Texto en blanco brillante */
+    font-weight: 600;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Indicador lateral azul */
+.menu-item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 4px;
+    background: #3b82f6; /* El mismo azul de tu avatar */
+    border-radius: 0 4px 4px 0;
+}
+
+/* Resaltar el icono cuando está activo */
+.menu-item.active i {
+    color: #3b82f6;
+    transform: scale(1.1);
+}
+
