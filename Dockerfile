@@ -56,4 +56,4 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 EXPOSE 8080
 
 # Comando de inicio: Recrea el enlace simbólico y corre los servicios
-CMD php artisan storage:link --force && php artisan migrate --force && php-fpm -D && nginx -g "daemon off;"
+CMD php artisan storage:link --force && php artisan migrate --force  && php-fpm -D && nginx -g "daemon off;"

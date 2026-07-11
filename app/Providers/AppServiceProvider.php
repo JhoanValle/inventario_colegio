@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
             try {
                 // Solo consultamos si la tabla realmente existe en la BD
-                if (Schema::hasTable('configuracions')) {
+                if (Schema::hasTable('configuracion')) {
                     $config = Configuracion::first();
                 }
             } catch (\Throwable $e) {
